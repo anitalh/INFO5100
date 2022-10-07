@@ -6,7 +6,7 @@ public class WeightedGrades {
         private double [] assignmentPercentage;
 		private double totalWeightedGrade;
 		 
-	    // Get method for totalMarks
+	        // Get method for totalMarks
 		public double[] getTotalPoints() {
 			return totalPoints;
 		}
@@ -49,15 +49,14 @@ public class WeightedGrades {
 		
 		// percentage calculation for the marks
 		public void calculatePercentage (){
-				double totalWeightedGrade = 0;
-				double currentWeightedGrade = 0;
-				for (int i  =0; i < totalPoints.length; i ++)
-				{
-					System.out.println("epoints" + this.earnedPoints[i] + "assingPer" + this.assignmentPercentage[i] +" totalPoints"+ this.totalPoints[i]);
-					currentWeightedGrade = (this.earnedPoints[i] * this.assignmentPercentage[i])/this.totalPoints[i];
-					totalWeightedGrade += currentWeightedGrade;
-				}		
-				this.setTotalWeightedGrade(totalWeightedGrade);				
+			double totalWeightedGrade = 0;
+		 	double currentWeightedGrade = 0;
+			for (int i=0; i < totalPoints.length; i++)
+			{
+				currentWeightedGrade = (this.earnedPoints[i] * this.assignmentPercentage[i])/this.totalPoints[i];
+				totalWeightedGrade += currentWeightedGrade;
+			}		
+			this.setTotalWeightedGrade(totalWeightedGrade);				
 			}
 		
 		// Print the Letter grades for TotalWeightedGrade
