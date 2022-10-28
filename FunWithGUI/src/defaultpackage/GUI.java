@@ -2,6 +2,9 @@ package defaultpackage;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -33,30 +36,39 @@ public class GUI extends JFrame implements ActionListener{
 	   // Label totalAssignmentPoints and set its size and position
 	   totalAssignmentPoints = new JLabel("Total Assignment Points");
 	   totalAssignmentPoints.setBounds(50, 50, 200, 30);
+	   totalAssignmentPoints.setForeground(Color.BLUE);
 	   
 	   // Text Field totalPoints and set its size and position
 	   totalPoints = new JTextField();
 	   totalPoints.setBounds(50, 100, 200, 30);
+	   totalPoints.setForeground(Color.BLUE);
 	   
 	   // Label earnedPoints and set its size and position
 	   earnedPoints = new JLabel("Earned Points");
 	   earnedPoints.setBounds(340, 50, 200, 30);
+	   earnedPoints.setForeground(Color.BLUE);
 	   
 	   // Text Field totalEarnedPoints and set its size and position
 	   totalEarnedPoints = new JTextField();
-	   totalEarnedPoints.setBounds(340, 100, 200, 30);	   
+	   totalEarnedPoints.setBounds(340, 100, 200, 30);
+	   totalEarnedPoints.setForeground(Color.BLUE);
 	   
 	   // Label percentagePoints and set its size and position
 	   percentagePoints = new JLabel("Percentage Of Class");
 	   percentagePoints.setBounds(50, 130,  200, 80);
+	   percentagePoints.setForeground(Color.BLUE);
 	   
 	   // Text Field totalPercentage and set its size and position
 	   totalPercentage = new JTextField();
 	   totalPercentage.setBounds(50, 200, 200, 30);
+	   totalPercentage.setForeground(Color.BLUE);
 	   
 	   // Button calculate and set its size and position
 	   calculate = new JButton("Click to Calculate score");
 	   calculate.setBounds(200, 300, 200, 30);
+	   calculate.setForeground(Color.BLUE);
+	   calculate.setBackground(Color.RED);
+	   calculate.setOpaque(true);
 	   
 	   // Call to Action Listener
 	   calculate.addActionListener(this);
@@ -64,11 +76,13 @@ public class GUI extends JFrame implements ActionListener{
 	   // Label weightedGrade and set its size and position
 	   weightedGrade = new JLabel("Weighted Score");
 	   weightedGrade.setBounds(250, 330, 200, 30);
+	   weightedGrade.setForeground(Color.BLUE);
 	   weightedGrade.setVisible(false);
 	   
 	   // Text Field totalweightedGrade and set its size and position
 	   totalweightedGrade = new JTextField();
 	   totalweightedGrade.setBounds(200, 360, 200, 30);
+	   totalweightedGrade.setForeground(Color.BLUE);
 	   totalweightedGrade.setVisible(false);
 
 	   // add elements to the frame
