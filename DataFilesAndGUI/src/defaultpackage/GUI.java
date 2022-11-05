@@ -10,6 +10,7 @@ import java.io.*;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.io.File;
+import java.util.ArrayList;
 
 public class GUI extends JFrame implements ActionListener{
 		
@@ -24,6 +25,7 @@ public class GUI extends JFrame implements ActionListener{
 		private JLabel writeFirstFiveLines;
 		private JTextArea newFirstFiveLines;
 		private String readStr ="";
+		private ArrayList<String> fileContent = new ArrayList<String>();
 			
 		  public GUI(){
 		   JFrame f = new JFrame("Weighted Grade");
@@ -115,9 +117,7 @@ public class GUI extends JFrame implements ActionListener{
 		  
 		@Override
 		    // On-click action
-			public void actionPerformed(ActionEvent e) {
-			
-			
+			public void actionPerformed(ActionEvent e) {		
 			if(e.getSource() == clickToRead) {
 				// Fetch file input name
 				String readFileName = obj.setReadFileName(fileName.getText());
@@ -131,6 +131,8 @@ public class GUI extends JFrame implements ActionListener{
 				      while ((nextLine = reader.readLine()) != null) 
 				      {
 				        lineNumber++;
+				        fileContent.add(nextLine +"\r\n");
+				        //fileContent += nextLine;
 				        if (lineNumber <= 6)
 				        {
 				        	// Split the column with ","
@@ -139,19 +141,18 @@ public class GUI extends JFrame implements ActionListener{
 				        	String colStr="";
 				        	while (colCount <3 && cols.length >= 3)
 				        	{		
-				        		//remove the delimeter at last
+				        		// remove the delimeter if greater then 2 else add
 				        		String delimeter = colCount >= 2 ? "\n" : ","; 
 				        		colStr += cols[colCount] + delimeter;
 				        		colCount += 1;
 				        	}
 				        	readStr += colStr;
 				        }
-				        else {
-				        	reader.close();
-				        	break;
-				        }
 				      
 				      }
+				      reader.close();
+				      
+				      // Display the output
 				      firstFiveLines.setText(readStr);				      
 				      } 
 				    catch (Exception ioExc)
@@ -166,7 +167,7 @@ public class GUI extends JFrame implements ActionListener{
 				// Fetch file input name
 				String fileName = obj.setFileName(writeFileName.getText());
 				try {
-					File outStream = new File (fileName);
+					File outStream = new File(fileName);
 					BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
 					
 					// Create new file
@@ -175,8 +176,13 @@ public class GUI extends JFrame implements ActionListener{
 				
 					}
 					
-					//write the data read
-					writer.write(readStr);
+					// write the data 
+					for ( String content: fileContent)
+					{
+						writer.write(content);
+					}
+					
+					// Display the output
 					newFirstFiveLines.setText(readStr);
 					writer.close();
 					}
